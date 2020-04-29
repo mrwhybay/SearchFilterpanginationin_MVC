@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "SecondExample";
+}
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+        //Call EmpDetails jsonResult Method
+        $.getJSON("EmpDetails",
+            function (json) {
+                var tr;
+                //Append each row to html table
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + json[i].Id + "</td>");
+                    tr.append("<td>" + json[i].Name + "</td>");
+                    tr.append("<td>" + json[i].City + "</td>");
+                    tr.append("<td>" + json[i].Address + "</td>");
+                    $('table').append(tr);
+                }
+                $('#EmpInfo').DataTable(); 
+            });
+    });
+</script>
+<table id="EmpInfo" class="table table-bordered table-condensed table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+

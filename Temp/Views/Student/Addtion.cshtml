@@ -1,0 +1,26 @@
+﻿@model Temp.Models.addtion
+@{
+    ViewBag.Title = "Addtion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Addtion</h2>
+
+
+@using (Html.BeginForm("Addtion", "Student", FormMethod.Post))
+{
+    @Html.EditorFor(x => x.a)
+    @Html.EditorFor(x => x.b)
+
+<select name="Opration">
+    <option value="Temp.Models.addtion"> Addition </option>
+    <option value="Temp.Models.Multiplication"> Multiplication </option>
+    <option value="Temp.Models.Subsraction"> substraction </option>
+</select>
+
+    <input type="submit" value="Submit" />
+
+
+}
+
+@ViewBag.TotalValue = @Html.DisplayFor(x => x.Result)
